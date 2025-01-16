@@ -1,0 +1,135 @@
+body {
+    margin: 0 auto;
+    font-size: 16px;
+    font-family: "微软雅黑", Arial, sans-serif;
+    line-height: 1.5;
+    color: #333;
+}
+
+div, p, ul, li, h1, h2, h3 {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    vertical-align: middle;
+}
+
+a {
+    color: #131313;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: #e9421a;
+}
+
+.web {
+    width: 90%;
+    max-width: 1024px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+#nav {
+    height: 45px;
+    background: #313131;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#nav ul {
+    display: flex;
+    padding: 0;
+}
+
+#nav ul li {
+    margin: 0 20px;
+}
+
+#nav ul li a {
+    font-size: 16px;
+    color: #ffffff;
+    line-height: 45px;
+}
+
+#nav ul li a.active {
+    color: #e9421a;
+}
+
+.main {
+    padding: 20px 0;
+}
+
+.title {
+    width: 240px;
+    height: 50px;
+    border-bottom: 3px solid #e9421a;
+    line-height: 50px;
+    margin: 20px auto;
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.ibox1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.ibox1 ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.ibox1 ul li {
+    width: 220px;
+    text-align: center;
+    padding: 10px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.ibox1 ul li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.ibox1 ul li .attack-image {
+    width: 165px;
+    max-width: 300px;
+    height: 169px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.ibox1 ul li h1 {
+    font-size: 16px;
+    color: #333;
+    margin: 5px 0;
+    font-weight: bold;
+}
+
+.ibox1 ul li p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.4;
+}
+
+
+.foot {
+    height: 50px;
+    line-height: 50px;
+    background: #cccccc;
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+}
