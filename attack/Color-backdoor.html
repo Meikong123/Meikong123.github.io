@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf - 8" />
+    <title>Color Backdoor</title>
+    <link rel="stylesheet" href="../css/css-attack-method.css">
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+
+<body>
+
+    <div class="web">
+
+        <!-- 导航栏 -->
+        <div id="nav">
+            <ul>
+                <li><a href="../index.html">首页</a></li>
+                <li><a href="../introduce.html">科研工具</a></li>
+                <li><a href="../backdoor.html">后门攻击</a></li>
+                <li><a href="../attack.html" class="active">攻击方法</a></li>
+                <li><a href="../defend.html">防御方法</a></li>
+                <li><a href="../chat.html">交流讨论</a></li>
+                <li><a href="../callme.html">我要投稿</a></li>
+                <li><a href="../about.html">关于我们</a></li>
+            </ul>
+        </div>
+
+        <!-- 主体内容 -->
+        <div class="main">
+
+            <div class="title"><strong>Color Backdoor: A Robust Poisoning Attack in Color Space<br>（ 2023.08.22&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCVPR 23 ）</strong></div>
+
+            <div class="ibox1">
+
+                <ul>
+                    <h3 align="center">Wenbo Jiang，Hongwei Li*，Guowen Xu，Tianwei Zhang</h3>
+                    <h4 align="center">University of Electronic Science and Technology of China<br>
+                        Nanyang Technological University
+                    </h4>
+                    <h4 align="center">文章链接：<a href="https://ieeexplore.ieee.org/document/10204120">View PDF</a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp工程链接：<a href="Color-backdoor.html">未开源</a></h4>
+                    <h4 align="center">所属类别：<span style="color: green;">Dirty - Label</span>&nbsp&nbsp|&nbsp&nbsp<span style="color: green;">Sample-Agnostic</span>&nbsp&nbsp|&nbsp&nbsp<span style="color: green;">Digital Attack</span>&nbsp&nbsp|&nbsp&nbsp<span style="color: green;">Single Trigger Attack</span>
+                    </h4>
+                    <h4 align="center">推荐阅读指数：<span style="color: red;">❤❤❤❤</span></h4>
+                </ul>
+                <br>
+                <ul>
+                    <h2 align="center">简介</h2>
+                    <h4 align="left">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp对图片的所有像素采用统一的颜色空间偏移作为触发器，在实现攻击方法的鲁棒性的同时也保证了后门图片的隐蔽性。
+                        为了找到最佳的触发器，通过PSNR，SSIM和LPIPS的度量定义自然度限制，采用粒子群优化（PSO）算法搜索最佳的触发器。
+                    </h4>
+                </ul>
+                <br>
+                <ul>
+                    <h2 align="center">亮点</h2>
+                    <h4 align="left"><span style="color: red;"><strong>亮点1：</strong></span>对图片的所有像素采用统一的颜色空间偏移作为触发器。<br><br>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp本文的想法很简单，就是对输入图片的每一个像素，都做一个统一的颜色偏移，写成公式形式如下：<br><br>
+                        \[p_i = (p_{i,1}, p_{i,2}, p_{i,3}), \quad t = (t_1, t_2, t_3)\]
+                        \[p_i' = p_i + t = (p_{i,1} + t_1, p_{i,2} + t_2, p_{i,3} + t_3)\]<br>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp最终的后门图像与原始图像的结果如下，隐蔽性方面已经非常可以了，因为在观察一张图片的时候，相比于对图片的内容做的修改，我们很少会去注意颜色的区别，只要不是很奇怪的颜色，
+                        都不会引起人们的明显注意。<br><br>
+                        <img src="../Pics/attack-method/Color Backdoor/1.png">
+
+                    </h4>
+                    <h4 align="left"><span style="color: red;"><strong>亮点2：</strong></span>通过PSNR，SSIM和LPIPS的度量定义自然度限制，采用粒子群优化（PSO）算法搜索最佳的触发器。<br><br>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp这里是做了一件什么事情呢？因为文中的触发器是一种颜色空间的偏移，具体要偏移“多大的程度”才是最佳的呢？
+                        基于这一想法，作者利用一个半训练代理模型的后门损失来衡量候选触发器的质量。此外，为了确保触发的自然性，作者利用三个流行的度量，
+                        PSNR、SSIM和LPIPS（这三个指标都是用来评判两张图片之间的相似度的）来量化正常的图片和后门图片之间的差距，在此基础上，定义了自然度限制。
+                        之后，通过粒子群优化算法寻找最优触发器。整体流程如下:<br><br>
+                        <img src="../Pics/attack-method/Color Backdoor/2.png"><br><br>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp图中的左上角是用攻击者的中毒数据集D<sub>p</sub>训练一个代理后门模型f<sub>s</sub>几个时期，后门模型的损失函数如下：<br><br>
+                        $$O(t) = \mathcal{L}_b = \sum_{x\in D_p} \mathrm{CE}(f_s(x + t), y_t)$$<br>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp虽然较大的随机颜色空间偏移也可以实现较高的攻击效果，但可能会使后门图片不太逼真。<br><br>
+                        <img src="../Pics/attack-method/Color Backdoor/3.png"><br><br>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp为了保证自然度的要求，文中使用了三个流行的度量，PSNR、SSIM和LPIPS来量化干净图片和后门图片之间的视觉相似性，
+                        并基于此定义了自然度限制。然后讨论了三种惩罚函数对自然度约束的影响：<br><br>
+                        \[e_1(t)=\max(0,\lambda_1 - \mathrm{PSNR}(t,S)) \]
+                        \[e_2(t)=\max(0,\lambda_2 - \mathrm{SSIM}(t,S)) \]
+                        \[e_3(t)=\max(0,\mathrm{LPIPS}(t,S)-\lambda_3)  \]
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp为了平衡这三个自然度限制之间的差异，文中对惩罚项进行了归一化，并将其求和，以获得总惩罚项。之后，采用文中提出的PSO算法选择最优的触发器。<br><br>
+                        \[P(t)=\sum_{j = 1}^{3}w_je_j,\ w_j=\frac{\sum_{i = 1}^{M}e_j(t_i)}{\sum_{j = 1}^{3}\sum_{i = 1}^{M}e_j(t_i)} \]<br>
+                        \[O_{total}(t)=O(t)+P(t) \]
+                    </h4>
+                </ul>
+                <br>
+                <ul>
+                    <h2 align="center">总结</h2>
+                    <h4 align="left">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp最后简单总结分类一下，这篇文章是明显的“Dirty-Label”、“Single Trigger Attack”攻击方法，
+                        由于触发器是对图片的每个像素应用的统一的颜色空间偏移，从宏观上来讲每张图片的触发器都是这么一个颜色偏移，因此可以归类为“Sample-Agnostic”攻击方法。
+                        此外，在物理世界中很难对某个物体做这么一个颜色的偏移，因此分类为“Digital Attack”攻击方法。
+                    </h4>
+                </ul>
+
+            </div>
+
+        </div>
+
+        <!-- 页脚 -->
+        <div class="foot">@  2025 meikong123</div>
+
+    </div>
+
+</body>
+
+</html>
