@@ -74,7 +74,7 @@
                         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp虽然较大的随机颜色空间偏移也可以实现较高的攻击效果，但可能会使后门图片不太逼真。<br><br>
                         <img src="../Pics/attack-method/Color Backdoor/3.png"><br><br>
                         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp为了保证自然度的要求，文中使用了三个流行的度量，PSNR、SSIM和LPIPS来量化干净图片和后门图片之间的视觉相似性，
-                        并基于此定义了自然度限制。然后讨论了三种惩罚函数对自然度约束的影响：<br><br>
+                        并基于此定义了自然度限制。然后讨论了三种惩罚函数对自然度约束的影响：<br>
                         \[e_1(t)=\max(0,\lambda_1 - \mathrm{PSNR}(t,S)) \]
                         \[e_2(t)=\max(0,\lambda_2 - \mathrm{SSIM}(t,S)) \]
                         \[e_3(t)=\max(0,\mathrm{LPIPS}(t,S)-\lambda_3)  \]
