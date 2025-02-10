@@ -77,7 +77,7 @@
                         并基于此定义了自然度限制。然后讨论了三种惩罚函数对自然度约束的影响：<br>
                         \[e_1(t)=\max(0,\lambda_1 - \mathrm{PSNR}(t,S)) \]
                         \[e_2(t)=\max(0,\lambda_2 - \mathrm{SSIM}(t,S)) \]
-                        \[e_3(t)=\max(0,\mathrm{LPIPS}(t,S)-\lambda_3)  \]，<br>
+                        \[e_3(t)=\max(0,\mathrm{LPIPS}(t,S)-\lambda_3)  \]<br>
                         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp为了平衡这三个自然度限制之间的差异，文中对惩罚项进行了归一化，并将其求和，以获得总惩罚项。之后，采用文中提出的PSO算法选择最优的触发器。<br><br>
                         \[P(t)=\sum_{j = 1}^{3}w_je_j,\ w_j=\frac{\sum_{i = 1}^{M}e_j(t_i)}{\sum_{j = 1}^{3}\sum_{i = 1}^{M}e_j(t_i)} \]<br>
                         \[O_{total}(t)=O(t)+P(t) \]
