@@ -137,22 +137,34 @@ body {
 /* 公告栏样式 */
 .announcement-board {
     margin-bottom: 20px;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 10px;
+    height: 320px; 
 }
 
 .announcement-item {
     display: flex;
     align-items: center;
-    padding: 10px 0;
+    padding: 10px;
     border-bottom: 1px dashed #ccc;
-    width: 50%; 
     box-sizing: border-box;
-    padding-right: 10px;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    cursor: pointer; 
+}
+
+.announcement-item:hover {
+    background-color: #f0f0f0; 
+}
+
+.announcement-item:active {
+    background-color: #e0e0e0; 
 }
 
 .announcement-date {
-    display: inline - block;
+    display: inline-block;
     background-color: #f0f0f0;
     color: #666;
     padding: 3px 6px;
@@ -161,7 +173,7 @@ body {
 }
 
 .announcement-day {
-    display: inline - block;
+    display: inline-block;
     background-color: #007BFF;
     color: white;
     padding: 8px 12px;
@@ -178,7 +190,59 @@ body {
 }
 
 .announcement-board a:hover {
-    text-decoration: underline;
+    text-decoration: none; 
+}
+
+/* 置顶公告样式 */
+.announcement-item:first-child {
+    background-color: #ffe4b5;
+    border-bottom: 2px solid #ff8c00;
+}
+
+.announcement-item:first-child a span:last-child {
+    color: #ff8c00;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+/* 翻页按钮样式 */
+.pagination {
+    text-align: center;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination button {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 6px 12px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.pagination button:hover {
+    background-color: white;
+}
+
+#page-numbers {
+    display: flex;
+    margin: 0 10px;
+}
+
+#page-numbers span {
+    padding: 6px;
+    margin: 0 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#page-numbers span.active {
+    background-color: #007BFF;
+    color: white;
 }
 
 /* 页脚样式 */
