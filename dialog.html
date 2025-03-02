@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对话中</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f4f4f4 0%, #e0e0e0 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+       .dialog-container {
+            width: 80%;
+            max-width: 800px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+       .dialog-header {
+            text-align: center;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+       .dialog-header h2 {
+            font-size: 24px;
+            color: #333;
+            margin: 0;
+        }
+
+       .dialog-content {
+            width: 100%;
+            margin-bottom: 20px;
+            text-align: left;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+       .answer-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+       .answer-button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 14px;
+        }
+
+       .answer-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dialog-container">
+        <div class="dialog-header">
+            <h2 id="dialog-title">与 meikio123 连线中……</h2>
+        </div>
+        <div class="dialog-content" id="dialog-history">
+        </div>
+        <div class="answer-buttons" id="answer-buttons"></div>
+    </div>
+    <script>
+        const dialogHistory = document.getElementById('dialog-history');
+        const answerButtons = document.getElementById('answer-buttons');
+
+        const history = [];
+        const author = 'meikio123';
+
+        const initialMessage = '我很高兴你能发现这个页面，想听听我的故事吗？';
+        addToHistory(author, initialMessage);
+
+        const firstAnswers = [
+            {
+                text: '我很想听',
+                callback: function () {
+                    addToHistory('我', '我很想听！！！');
+                    const story1 = '这份Blog是我对自己研究生期间的学习成果的总结，我从24年4月份开始接触深度学习和后门攻击，从最初的读文献、配环境开始，是在各位前辈的帮助下一步一步进步的。';
+                    addToHistory(author, story1);
+                    answerButtons.innerHTML = '';
+                    const secondAnswers = [
+                        {
+                            text: '为什么要制作这份Blog呢？',
+                            callback: function () {
+                                addToHistory('我', '为什么要制作这份Blog呢？');
+                                const story2 = '在我当时的学习过程中，也是受到了一位师兄的Blog的启发，我就感觉，师兄虽然毕业了，但它的Blog却被传了下来，还能帮助师弟师妹们学习。因此，受这位素未谋面的师兄的启发，我也开始学习了HTML/CSS/Javascript，开始制作了这份Blog，也希望尽我所能，帮助后来的师弟师妹们，哈哈哈……';
+                                addToHistory(author, story2);
+                                answerButtons.innerHTML = '';
+                                const finalAnswers = [
+                                    {
+                                        text: '感谢你对这份Blog的贡献！！！',
+                                        callback: function () {
+                                            addToHistory('我', '感谢你对这份Blog的贡献！！！');
+                                            const thanks = '感谢您的聆听！';
+                                            addToHistory(author, thanks);
+                                            answerButtons.innerHTML = '';
+                                        }
+                                    }
+                                ];
+                                finalAnswers.forEach(answer => {
+                                    const button = document.createElement('button');
+                                    button.classList.add('answer-button');
+                                    button.textContent = answer.text;
+                                    button.onclick = answer.callback;
+                                    answerButtons.appendChild(button);
+                                });
+                            }
+                        },
+                        {
+                            text: '这份Blog有什么意义呢？',
+                            callback: function () {
+                                addToHistory('我', '这份Blog有什么意义呢？');
+                                const story2 = '在我当时的学习过程中，也是受到了一位师兄的Blog的启发，我就感觉，师兄虽然毕业了，但它的Blog却被传了下来，还能帮助师弟师妹们学习。因此，受这位素未谋面的师兄的启发，我也开始学习了HTML/CSS/Javascript，开始制作了这份Blog，也希望尽我所能，帮助后来的师弟师妹们，哈哈哈……';
+                                addToHistory(author, story2);
+                                answerButtons.innerHTML = '';
+                                const finalAnswers = [
+                                    {
+                                        text: '感谢你对这份Blog的贡献！！！',
+                                        callback: function () {
+                                            addToHistory('我', '感谢你对这份Blog的贡献！！！');
+                                            const thanks = '感谢您的聆听！';
+                                            addToHistory(author, thanks);
+                                            answerButtons.innerHTML = '';
+                                        }
+                                    }
+                                ];
+                                finalAnswers.forEach(answer => {
+                                    const button = document.createElement('button');
+                                    button.classList.add('answer-button');
+                                    button.textContent = answer.text;
+                                    button.onclick = answer.callback;
+                                    answerButtons.appendChild(button);
+                                });
+                            }
+                        }
+                    ];
+                    secondAnswers.forEach(answer => {
+                        const button = document.createElement('button');
+                        button.classList.add('answer-button');
+                        button.textContent = answer.text;
+                        button.onclick = answer.callback;
+                        answerButtons.appendChild(button);
+                    });
+                }
+            },
+            {
+                text: '不太感兴趣',
+                callback: function () {
+                    addToHistory('我', '不太感兴趣');
+                    addToHistory(author, '那很遗憾，期待下次交流！');
+                    answerButtons.innerHTML = '';
+                }
+            }
+        ];
+
+        firstAnswers.forEach(answer => {
+            const button = document.createElement('button');
+            button.classList.add('answer-button');
+            button.textContent = answer.text;
+            button.onclick = answer.callback;
+            answerButtons.appendChild(button);
+        });
+
+        function addToHistory(sender, message) {
+            history.push({ sender, message });
+            const p = document.createElement('p');
+            if (sender === '我') {
+                p.textContent = `${sender} : `;
+            } else {
+                p.textContent = `${sender}: `;
+            }
+            dialogHistory.appendChild(p);
+
+            if (sender === author) {
+                let index = 0;
+                const typingInterval = setInterval(() => {
+                    if (index < message.length) {
+                        p.textContent += message[index];
+                        index++;
+                        dialogHistory.scrollTop = dialogHistory.scrollHeight;
+                    } else {
+                        clearInterval(typingInterval);
+                    }
+                }, 100);
+            } else {
+                p.textContent += message;
+                dialogHistory.scrollTop = dialogHistory.scrollHeight;
+            }
+        }
+    </script>
+</body>
+
+</html>
