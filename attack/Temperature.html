@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf - 8" />
+    <title>Temperature</title>
+    <link rel="stylesheet" href="../css/css-attack-method2.css">
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+
+<body>
+
+    <div class="web">
+
+        <!-- 导航栏 -->
+        <div id="nav">
+            <ul>
+                <li><a href="../index.html">首页</a></li>
+                <li><a href="../introduce.html">科研工具</a></li>
+                <li><a href="../backdoor.html">后门攻击</a></li>
+                <li><a href="../attack.html" class="active">攻击方法</a></li>
+                <li><a href="../defend.html">防御方法</a></li>
+                <li><a href="../chat.html">交流讨论</a></li>
+                <li><a href="../callme.html">我要投稿</a></li>
+                <li><a href="../about.html">关于我们</a></li>
+            </ul>
+        </div>
+
+        <!-- 主体内容 -->
+        <div class="main">
+
+            <div class="title"><strong>Physical Backdoor: Towards Temperature-based Backdoor Attacks in the Physical World <br>（ 2024.04.30&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCVPR 24 ）</strong></div>
+
+            <div class="ibox1">
+
+                <ul>
+                    <h3 align="center">Wen Yin, Jian Lou, Pan Zhou*, Yulai Xie*, Dan Feng, Yuhua Sun, Tailai Zhang, Lichao Sun</h3>
+                    <h4 align="center">School of Cyber Science and Engineering, Huazhong University of Science and Technology<br>
+                        Wuhan National Laboratory for Optoelectronics, Huazhong University of Science and Technology<br>
+                        Jinyinhu Laboratory<br>
+                        Zhejiang University<br>
+                        Lehigh University
+                    </h4>
+                    <h4 align="center">文章链接：<a href="https://arxiv.org/pdf/2404.19417">View PDF</a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp工程链接：<a href="Temperature.html">未开源</a></h4>
+                    </h4>
+                    <h4 align="center">推荐阅读指数：<span style="color: red;">❤❤❤❤❤</span></h4>
+                </ul>
+                <br>
+                <!-- <ul>
+                    <h2 align="center">简介</h2>
+                    <h4 align="left">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp采用相机指纹作为触发器，无需对原始图片做任何修改。设计CFEB模块来提取相机指纹特征，
+                        并结合EFRB模块一起增强教师网络的的能力，最后通过知识蒸馏技术将教师网络架构转移到学生网络中。
+
+                    </h4>
+                </ul>
+                <br>
+                <ul>
+                    <h2 align="center">亮点</h2>
+                    <h4 align="left"><span style="color: red;"><strong>亮点1：</strong></span>从相机识别研究中获取到灵感，采用相机指纹作为触发器，从而无需对图片做任何修改。<br><br>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp从相机识别研究中获取到灵感，设计良好的神经网络可以提取图像中与相机相关的特征，即相机指纹。
+                        这种相机指纹功能提供了注入后门的理论可能性。相机成像的过程如下：<br><br>
+                        <img src="../Pics/attack-method/Camera/1.png"><br><br>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp其中透镜捕获从物体反射的全光谱光，由Bayer滤波器滤波以生成RAM格式的图像。RAM图像经历Bayer去马赛克以将其转换为三通道RGB图像，
+                        然后经历伪色去除、JPEG压缩和其他图像处理步骤以生成JPEG格式图像。然而，由于技术和材料的限制，大多数相机硬件都存在一些缺陷，
+                        这些缺陷会在捕获的图像上留下独特的硬件相关伪影。此外，不同的相机使用不同的拜耳去马赛克算法和图像处理操作。
+                        因此，即使在相同的角度和照明条件下拍摄，不同相机拍摄的同一物体的图像也具有不同的相机指纹。
+
+                    </h4>
+                    <h4 align="left"><span style="color: red;"><strong>亮点2：</strong></span>精心设计了两个模块CFEB和EFRB，使得教师网络能够更好地提取相机指纹特征。<br><br>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp先放一张整体流程的图，把结构理清：<br><br>
+                        <img src="../Pics/attack-method/Camera/2.png"><br><br>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp由于相机指纹难以用传统的模型提取，文中首先提出了Camera Fingerprint extraction block（CFEB）模块，其组成成分TFDB的结构如下所示：<br><br>
+                        <img src="../Pics/attack-method/Camera/3.png"><br><br>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp相机识别模型由CFEB、卷积块和协方差池化层组成。CFEB的输出是从输入图像中提取的相机指纹特征，随后将其馈送到卷积块中进行处理。
+                        利用协方差池化层进一步处理所得到的输出以降低特征表示的维度。得到的特征向量用作关于图像的相机的分类信息。
+                        （CFEB模块和协方差池化层的细节有的地方我也没怎么理解，有兴趣的去文中研究一下吧！）<br><br>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp之后，在作者构建的中毒数据集（包含用不同相机拍摄的不同类别的图片）上训练教师网络，使其能够既能学习相机指纹特征，又能实现
+                        分类功能。考虑到虽然CFEB能够提取相机指纹特征来触发后门，但在提取图像的语义信息方面可能表现不佳，这将导致模型在良性样本上的性能下降。因此文中又引入了
+                        EFRB模块，EFRB模块不仅保证了模型识别良性样本的能力，还增强了其提取相机指纹的能力。其结构如下：<br><br>
+                        <img src="../Pics/attack-method/Camera/5.png"><br><br>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp这样子就可以在教师模型中植入后门，但在相机指纹提取过程中也损失了部分图像语义信息，导致了原始任务性能的下降。
+                        此外，由于没有采用传统的分类模型结构，文中又利用模型蒸馏技术将教师网络的能力迁移到传统的分类模型中，使得传统的分类网络也具有识别相机指纹的能力。<br><br>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp我认为这篇文章的亮点就在于它把触发器从样本上分离了，从而不用对原始的图片做任何修改，可以说实现了中毒样本100%的隐蔽性，
+                        但同时也将攻击者的权限扩大了，攻击者不仅可以访问数据集，也可以控制模型的训练过程，因此它的实用性也会大打折扣！但是这篇文章在我看来，还是非常值得阅读的。
+                    </h4>
+                </ul>
+                <br>
+                <ul>
+                    <h2 align="center">总结</h2>
+                    <h4 align="left">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp最后简单总结分类一下，这篇文章是明显的“Dirty-Label”、“Single Trigger Attack”攻击方法，
+                        由于触发器是一个固定的相机指纹，因此可以归类为“Sample-Agnostic”攻击方法。
+                        此外，利用相机指纹作为触发器在物理世界中可以很轻松的部署，只需要用某部相机去拍摄即可，因此很明确地分类为“Digital Attack”攻击方法。
+                    </h4>
+                </ul> -->
+
+            </div>
+
+        </div>
+
+        <!-- 页脚 -->
+        <div class="foot">@  2025 meikong123</div>
+
+    </div>
+
+</body>
+
+</html>
