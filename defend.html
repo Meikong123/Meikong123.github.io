@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>防御方法</title>
+    <link rel="stylesheet" href="css/css-attack.css">
+    <script>
+        const correctHash = "4fec0d8bbf9c8e725e63d39141804c1417dcc1bde4752c0aa210dd7ad646747f";
+        const verifiedKey = 'passwordVerified';
+
+        async function generateHash(message) {
+            const msgBuffer = new TextEncoder().encode(message);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+        }
+
+        async function verifyPassword() {
+            const isVerified = localStorage.getItem(verifiedKey);
+            if (isVerified === 'true') {
+                return;
+            }
+
+            const userInput = prompt("请输入密码：");
+            if (!userInput) {
+                alert("取消访问！");
+                window.location.href = "index.html";
+                return;
+            }
+            const userHash = await generateHash(userInput);
+            if (userHash === correctHash) {
+                localStorage.setItem(verifiedKey, 'true');
+            } else {
+                alert("密码错误！");
+                window.location.href = "index.html";
+            }
+        }
+
+        window.onload = verifyPassword;
+    </script>
+</head>
+
+<body>
+
+    <div class="web">
+
+        <!-- 导航栏 -->
+        <div id="nav">
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="introduce.html">科研工具</a></li>
+                <li><a href="backdoor.html">后门攻击</a></li>
+                <li><a href="attack.html">攻击方法</a></li>
+                <li><a href="defend.html" class="active">防御方法</a></li>
+                <li><a href="chat.html">交流讨论</a></li>
+                <li><a href="callme.html">我要投稿</a></li>
+                <li><a href="about.html">关于我们</a></li>
+            </ul>
+        </div>
+
+        <!-- 主体内容 -->
+        <div class="main">
+
+            <!-- 图像 -->
+            <div class="title"><span style="color: red;">-----------------------------------------------------&nbsp&nbsp&nbsp&nbsp</span><strong>图像领域防御方法整理</strong><span style="color: red;">&nbsp&nbsp&nbsp&nbsp-----------------------------------------------------</span></div>
+
+            <div class="ibox1">
+                <ul>
+                    <h3><span style="color: red;">※※</span>&nbsp&nbsp<span style="color: blue;">经典文章</span>&nbsp&nbsp<span style="color: red;">※※</span></h3>
+                </ul>
+                <ul>
+                    <li>
+                        <div class="item-container">
+                            <a href="./defend/Fine-Pruning.html">
+                                <img src="Pics/defend/Fine-Pruning.png" class="attack-image" alt="Fine-Pruning" />
+                                <h1>Fine-Pruning(2018)</h1>
+                            </a>
+                            <p>Fine-Pruning: Defending Against Backdooring Attacks on Deep Neural Networks</p>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="item-container">
+                            <a href="./defend/STRIP.html">
+                                <img src="Pics/defend/STRIP.png" class="attack-image" alt="STRIP" />
+                                <h1>STRIP(2019)</h1>
+                            </a>
+                            <p>STRIP: A Defence Against Trojan Attacks on Deep Neural Networks<br><br></p>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="item-container">
+                            <a href="./defend/Neural-Cleanse.html">
+                                <img src="Pics/defend/Neural-Cleanse.png" class="attack-image" alt="Neural-Cleanse" />
+                                <h1>Neural-Cleanse(2019)</h1>
+                            </a>
+                            <p>Neural Cleanse: Identifying and Mitigating Backdoor Attacks in Neural Networks<br><br></p>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="item-container">
+                            <a href="./defend/Spectral-Signatures.html">
+                                <img src="Pics/defend/Spectral-Signatures.png" class="attack-image" alt="Spectral-Signatures" />
+                                <h1>Spectral-Signatures(2018)</h1>
+                            </a>
+                            <p>Spectral Signatures in Backdoor Attacks<br><br><br></p>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="item-container">
+                            <a href="./defend/Grad-CAM.html">
+                                <img src="Pics/defend/Grad-CAM.png" class="attack-image" alt="Grad-CAM" />
+                                <h1>Grad-CAM(2016)</h1>
+                            </a>
+                            <p>Grad-CAM: Visual Explanations from Deep Networks via Gradient-based Localization<br><br></p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 文本 -->
+            <div class="title"><span style="color: red;">-----------------------------------------------------&nbsp&nbsp&nbsp&nbsp</span><strong>文本领域防御方法整理</strong><span style="color: red;">&nbsp&nbsp&nbsp&nbsp-----------------------------------------------------</span></div>
+
+            <div class="ibox1">
+                <ul>
+                    <h3><span style="color: red;">※※</span>&nbsp&nbsp<span style="color: blue;">经典文章</span>&nbsp&nbsp<span style="color: red;">※※</span></h3>
+                </ul>
+                <ul>
+                    <li>
+                        
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 点云 -->
+            <div class="title"><span style="color: red;">-----------------------------------------------------&nbsp&nbsp&nbsp&nbsp</span><strong>点云领域防御方法整理</strong><span style="color: red;">&nbsp&nbsp&nbsp&nbsp-----------------------------------------------------</span></div>
+
+            <div class="ibox1">
+                <ul>
+                    <h3><span style="color: red;">※※</span>&nbsp&nbsp<span style="color: blue;">经典文章</span>&nbsp&nbsp<span style="color: red;">※※</span></h3>
+                </ul>
+                <ul>
+                    <li>
+                        
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- 页脚 -->
+        <div class="foot">@  2025 meikong123</div>
+
+    </div>
+
+</body>
+
+</html>

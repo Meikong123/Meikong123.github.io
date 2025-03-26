@@ -1,0 +1,119 @@
+/* 全局样式 */
+body {
+    font-family: 'Noto Sans SC', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* 网页容器样式 */
+.web {
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto;
+    background-color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* 导航栏样式 */
+#nav {
+    background-color: #2c3e50;
+}
+
+#nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#nav li {
+    margin: 0;
+}
+
+#nav a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px 20px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+#nav a:hover {
+    background-color: #34495e;
+}
+
+#nav a.active {
+    background-color: #1abc9c;
+}
+
+/* 主体内容样式 */
+.main {
+    padding: 40px;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #2c3e50;
+}
+
+.ibox1 {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.ibox1 ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.ibox1 h3 {
+    font-size: 22px;
+    color: #1abc9c;
+    margin-bottom: 15px;
+}
+
+.ibox1 p {
+    margin: 15px 0;
+    text-align: justify;
+}
+
+.ibox1 a {
+    color: #1abc9c;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.ibox1 a:hover {
+    color: #16a085;
+    text-decoration: underline;
+}
+
+/* 图片占位符样式 */
+.ibox1 img {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+
+/* 页脚样式 */
+.foot {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}    
