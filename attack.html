@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>攻击方法</title>
+    <link rel="stylesheet" href="css/css-attack.css">
+    <script>
+        const correctHash = "4fec0d8bbf9c8e725e63d39141804c1417dcc1bde4752c0aa210dd7ad646747f";
+        const verifiedKey = 'passwordVerified';
+
+        async function generateHash(message) {
+            const msgBuffer = new TextEncoder().encode(message);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+        }
+
+        async function verifyPassword() {
+            const isVerified = localStorage.getItem(verifiedKey);
+            if (isVerified === 'true') {
+                return;
+            }
+
+            const userInput = prompt("请输入密码：");
+            if (!userInput) {
+                alert("取消访问！");
+                window.location.href = "index.html";
+                return;
+            }
+            const userHash = await generateHash(userInput);
+            if (userHash === correctHash) {
+                localStorage.setItem(verifiedKey, 'true');
+            } else {
+                alert("密码错误！");
+                window.location.href = "index.html";
+            }
+        }
+
+        window.onload = verifyPassword;
+    </script>
+</head>
+
+<body>
+
+    <div class="web">
+
+        <!-- 导航栏 -->
+        <div id="nav">
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="introduce.html">科研工具</a></li>
+                <li><a href="backdoor.html">后门攻击</a></li>
+                <li><a href="attack.html" class="active">攻击方法</a></li>
+                <li><a href="defend.html">防御方法</a></li>
+                <li><a href="chat.html">交流讨论</a></li>
+                <li><a href="callme.html">我要投稿</a></li>
+                <li><a href="about.html">关于我们</a></li>
+            </ul>
+        </div>
+
+        <!-- 主体内容 -->
+        <div class="main">
+
+            <!-- 图像 -->
+            <div class="title"><span style="color: red;">-----------------------------------------------------&nbsp&nbsp&nbsp&nbsp</span><strong>图像领域攻击方法整理</strong><span style="color: red;">&nbsp&nbsp&nbsp&nbsp-----------------------------------------------------</span></div>
+
+            <div class="ibox1">
+                <ul>
+                    <h3><span style="color: red;">※※</span>&nbsp&nbsp<span style="color: blue;">早期工作</span>&nbsp&nbsp<span style="color: red;">※※</span></h3>
+                </ul>
+                <ul>
+                    <li>
+                        <div class="item-container">
+                            <a href="./attack/BadNets.html">
+                                <img src="Pics/attack/BadNets.png" class="attack-image" alt="BadNets" />
+                                <h1>BadNets(2019)</h1>
+                            </a>
+                            <p>BadNets: Evaluating Backdooring Attacks on Deep Neural Networks<br><br></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-container">
+                            <a href="./attack/Blend.html">
+                                <img src="Pics/attack/Blend.png" class="attack-image" alt="Blend" />
+                                <h1>Blend(2017)</h1>
+                            </a>
+                            <p>Targeted Backdoor Attacks on Deep Learning Systems Using Data Poisoning<br><br></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-container">
+                            <a href="./attack/Refool.html">
+                                <img src="Pics/attack/Refool.png" class="attack-image" alt="Refool" />
+                                <h1>Refool(2020)</h1>
+                            </a>
+                            <p>Reflection Backdoor: A Natural Backdoor Attack on Deep Neural Networks<br><br></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-container">
+                            <a href="./attack/HTBA.html">
+                                <img src="Pics/attack/HTBA.png" class="attack-image" alt="HTBA" />
+                                <h1>HTBA(2020)</h1>
+                            </a>
+                            <p>Hidden Trigger Backdoor Attacks<br><br>&nbsp</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-container">
+                            <a href="./attack/Input-aware.html">
+                                <img src="Pics/attack/Input-aware.png" class="attack-image" alt="Input-aware" />
+                                <h1>Input-aware(2020)</h1>
+                            </a>
+                            <p>Input-Aware Dynamic Backdoor Attack<br><br>&nbsp</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-container">
+                            <a href="./attack/ISSBA.html">
+                                <img src="Pics/attack/ISSBA.png" class="attack-image" alt="ISSBA" />
+                                <h1>ISSBA(2020)</h1>
+                            </a>
+                            <p>Invisible Backdoor Attack With Sample-Specific Triggers<br><br></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-container">
+                            <a href="./attack/Composite-MEBF.html">
+                                <img src="Pics/attack/Composite-MEBF.png" class="attack-image" alt="ISSBA" />
+                                <h1>Composite MEBF(2020)</h1>
+                            </a>
+                            <p>Composite Backdoor Attack for Deep Neural Network by Mixing Existing Benign Features<br><br></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-container">
+                            <a href="./attack/WaNet.html">
+                                <img src="Pics/attack/WaNet.png" class="attack-image" alt="WaNet" />
+                                <h1>WaNet(2021)</h1>
+                            </a>
+                            <p>WaNet -- Imperceptible Warping-based Backdoor Attack<br><br></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-container">
+                            <a href="./attack/LIRA.html">
+                                <img src="Pics/attack/LIRA.png" class="attack-image" alt="LIRA" />
+                                <h1>LIRA(2021)</h1>
+                            </a>
+                            <p>LIRA: Learnable, Imperceptible and Robust Backdoor Attacks<br><br></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-container">
+                            <a href="attack/Rotation.html">
+                                <img src="Pics/attack/Rotation.png" class="attack-image" alt="Rotation" />
+                                <h1>Rotation(2022)</h1>
+                            </a>
+                            <p>Just Rotate it: Deploying Backdoor Attacks via Rotation Transformation<br><br></p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="ibox1">
+                <ul>
+                    <h3><span style="color: red;">※※</span>&nbsp&nbsp<span style="color: blue;">最新进展</span>&nbsp&nbsp<span style="color: red;">※※</span></h3>
+                </ul>
+                <ul>
+                    <li>
+                        <div class="item-container">
+                            <a href="attack/Color-backdoor.html">
+                                <img src="Pics/attack/ColorBackdoor.png" class="attack-image" alt="Color Backdoor" />
+                                <h1>Color Backdoor(2023)</h1>
+                            </a>
+                            <p>Color Backdoor: A Robust Poisoning Attack in Color Space<br><br></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-container">
+                            <a href="attack/Camera.html">
+                                <img src="Pics/attack/Camera.png" class="attack-image" alt="Camera" />
+                                <h1>Camera(2023)</h1>
+                            </a>
+                            <p>Physical Invisible Backdoor Based on Camera Imaging<br><br></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-container">
+                            <a href="attack/LaserGuider.html">
+                                <img src="Pics/attack/LaserGuider.png" class="attack-image" alt="LaserGuider" />
+                                <h1>LaserGuider(2024)</h1>
+                            </a>
+                            <p>LaserGuider: A Laser Based Physical Backdoor Attack against Deep Neural Networks</p>
+                        </div>
+                        <li>
+                            <div class="item-container">
+                                <a href="attack/MakeupAttack.html">
+                                    <img src="Pics/attack/MakeupAttack.png" class="attack-image" alt="MakeupAttack" />
+                                    <h1>MakeupAttack(2024)</h1>
+                                </a>
+                                <p>MakeupAttack: Feature Space Black-box Backdoor Attack on Face Recognition via Makeup Transfer</p>
+                            </div>
+                        </li>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 文本 -->
+            <div class="title"><span style="color: red;">-----------------------------------------------------&nbsp&nbsp&nbsp&nbsp</span><strong>文本领域攻击方法整理</strong><span style="color: red;">&nbsp&nbsp&nbsp&nbsp-----------------------------------------------------</span></div>
+
+            <div class="ibox1">
+                <ul>
+                    <li>
+                        
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 点云 -->
+            <div class="title"><span style="color: red;">-----------------------------------------------------&nbsp&nbsp&nbsp&nbsp</span><strong>点云领域攻击方法整理</strong><span style="color: red;">&nbsp&nbsp&nbsp&nbsp-----------------------------------------------------</span></div>
+
+            <div class="ibox1">
+                <ul>
+                    <li>
+                        
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 多模态 -->
+            <div class="title"><span style="color: red;">-----------------------------------------------------&nbsp&nbsp&nbsp&nbsp</span><strong>多模态下攻击方法整理</strong><span style="color: red;">&nbsp&nbsp&nbsp&nbsp-----------------------------------------------------</span></div>
+
+            <div class="ibox1">
+                <ul>
+                    <li>
+                        <div class="item-container">
+                            <a href="attack/Video.html">
+                                <img src="Pics/attack/Video.png" class="attack-image" alt="Video" />
+                                <h1>Video(2023)</h1>
+                            </a>
+                            <p>Look, Listen, and Attack: Backdoor Attacks Against Video Action Recognition<br><br></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-container">
+                            <a href="attack/BadToken.html">
+                                <img src="Pics/attack/BadToken.png" class="attack-image" alt="BadToken" />
+                                <h1>BadToken(2025)</h1>
+                            </a>
+                            <p>BadToken: Token-level Backdoor Attacks to Multi-modal Large Language Models<br><br></p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 其它任务 -->
+            <div class="title"><span style="color: red;">-----------------------------------------------------&nbsp&nbsp&nbsp&nbsp</span><strong>其它任务攻击方法整理</strong><span style="color: red;">&nbsp&nbsp&nbsp&nbsp-----------------------------------------------------</span></div>
+
+            <div class="ibox1">
+                <ul>
+                    <li>
+                        <div class="item-container">
+                            <a href="attack/Temperature.html">
+                                <img src="Pics/attack/Temperature.png" class="attack-image" alt="Temperature" />
+                                <h1>Temperature(2024)</h1>
+                            </a>
+                            <p>Physical Backdoor: Towards Temperature-based Backdoor Attacks in the Physical World</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-container">
+                            <a href="attack/Action.html">
+                                <img src="Pics/attack/Action.png" class="attack-image" alt="Action" />
+                                <h1>Action(2024)</h1>
+                            </a>
+                            <p>Towards Physical World Backdoor Attacks against Skeleton Action Recognition<br><br></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-container">
+                            <a href="attack/TrojanRobot.html">
+                                <img src="Pics/attack/TrojanRobot.png" class="attack-image" alt="TrojanRobot" />
+                                <h1>TrojanRobot(2024)</h1>
+                            </a>
+                            <p>TrojanRobot: Backdoor Attacks Against Robotic Manipulation in the Physical World<br><br></p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- 页脚 -->
+        <div class="foot">@  2025 meikong123</div>
+
+    </div>
+
+</body>
+
+</html>

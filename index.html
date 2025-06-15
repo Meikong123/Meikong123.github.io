@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>MyBlog</title>
+    <link rel="stylesheet" href="css/css-index.css">
+</head>
+
+<body>
+    <div class="web">
+
+        <!-- 导航栏 -->
+        <div id="nav">
+            <ul>
+                <li><a href="index.html" class="active">首页</a></li>
+                <li><a href="introduce.html">科研工具</a></li>
+                <li><a href="backdoor.html">后门攻击</a></li>
+                <li><a href="attack.html">攻击方法</a></li>
+                <li><a href="defend.html">防御方法</a></li>
+                <li><a href="chat.html">交流讨论</a></li>
+                <li><a href="callme.html">我要投稿</a></li>
+                <li><a href="about.html">关于我们</a></li>
+            </ul>
+        </div>
+
+        <!-- 主体内容 -->
+        <div class="main">
+
+            <!-- 轮播栏 -->
+            <div class="title"><strong>典型后门样本示例</strong></div>
+            <div class="slider-container">
+                <button class="slider-button prev" onclick="prevSlide()">&lt;</button>
+                <div class="slider">
+                    <div class="slide">
+                        <img src="Pics/index/Origin.png" class="index-image" alt="Origin image" />
+                        <h1>Origin image</h1>
+                    </div>
+                    <div class="slide">
+                        <img src="Pics/index/BadNets.png" class="index-image" alt="BadNets" />
+                        <h1>BadNets</h1>
+                    </div>
+                    <div class="slide">
+                        <img src="Pics/index/Blend.png" class="index-image" alt="Blend" />
+                        <h1>Blend</h1>
+                    </div>
+                    <div class="slide">
+                        <img src="Pics/index/WaNet.png" class="index-image" alt="WaNet" />
+                        <h1>WaNet</h1>
+                    </div>
+                    <div class="slide">
+                        <img src="Pics/index/LIRA.png" class="index-image" alt="LIRA" />
+                        <h1>LIRA</h1>
+                    </div>
+                    <div class="slide">
+                        <img src="Pics/index/SIG.png" class="index-image" alt="SIG" />
+                        <h1>SIG</h1>
+                    </div>
+                    <div class="slide">
+                        <img src="Pics/index/Refool.png" class="index-image" alt="ReFool" />
+                        <h1>Refool</h1>
+                    </div>
+                    <div class="slide">
+                        <img src="Pics/index/Rotation.png" class="index-image" alt="Rotation" />
+                        <h1>Rotation</h1>
+                    </div>
+                </div>
+                <button class="slider-button next" onclick="nextSlide()">&gt;</button>
+            </div>
+
+            <!-- 公告栏 -->
+            <div class="title"><strong>博客最新动态</strong></div>
+            <div class="announcement-board" id="announcement-board">
+                <div class="announcement-item">
+                    <span class="announcement-date">2025-01</span>
+                    <span class="announcement-day">16</span>
+                    <a href="announce/0announce-1.html">Blog首发公告<span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        Top</span></a>
+                </div>
+                <div class="announcement-item">
+                    <span class="announcement-date">2025-06</span>
+                    <span class="announcement-day">15</span>
+                    <a href="announce/0announce-9.html">更新公告</a>
+                </div>
+                <div class="announcement-item">
+                    <span class="announcement-date">2025-03</span>
+                    <span class="announcement-day">30</span>
+                    <a href="announce/0announce-8.html">更新公告</a>
+                </div>
+                <div class="announcement-item">
+                    <span class="announcement-date">2025-03</span>
+                    <span class="announcement-day">26</span>
+                    <a href="announce/0announce-7.html">更新公告</a>
+                </div>
+                <div class="announcement-item">
+                    <span class="announcement-date">2025-03</span>
+                    <span class="announcement-day">09</span>
+                    <a href="announce/0announce-6.html">更新公告</a>
+                </div>
+                <div class="announcement-item">
+                    <span class="announcement-date">2025-03</span>
+                    <span class="announcement-day">02</span>
+                    <a href="announce/0announce-5.html">更新公告</a>
+                </div>
+                <div class="announcement-item">
+                    <span class="announcement-date">2025-02</span>
+                    <span class="announcement-day">23</span>
+                    <a href="announce/0announce-4.html">更新公告</a>
+                </div>
+                <div class="announcement-item">
+                    <span class="announcement-date">2025-02</span>
+                    <span class="announcement-day">10</span>
+                    <a href="announce/0announce-3.html">更新公告</a>
+                </div>
+                <div class="announcement-item">
+                    <span class="announcement-date">2025-02</span>
+                    <span class="announcement-day">07</span>
+                    <a href="announce/0announce-2.html">更新公告</a>
+                </div>
+            </div>
+            <!-- 翻页按钮 -->
+            <div class="pagination">
+                <button id="prev-page" onclick="prevPage()">上一页</button>
+                <div id="page-numbers"></div>
+                <button id="next-page" onclick="nextPage()">下一页</button>
+            </div>
+            <br><br>
+
+            <!-- 心得栏 -->
+            <div class="title"><strong>悟语心笺</strong></div>
+            <div class="announcement-board" id="thought-board">
+                <div class="announcement-item">
+                    <span class="announcement-date">2025-03</span>
+                    <span class="announcement-day">26</span>
+                    <a href="thought/thought-1.html">写在开始<span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        Top</span></a>
+                </div>
+                <div class="announcement-item">
+                    <span class="announcement-date">2025-03</span>
+                    <span class="announcement-day">30</span>
+                    <a href="thought/thought-2.html">我真的很幸运</a>
+                </div>
+            </div>
+            <!-- 翻页按钮 -->
+            <div class="pagination" id="thought-pagination">
+                <button id="thought-prev-page" onclick="thoughtPrevPage()">上一页</button>
+                <div id="thought-page-numbers"></div>
+                <button id="thought-next-page" onclick="thoughtNextPage()">下一页</button>
+            </div>
+            <br><br>
+
+
+            <!-- 简介栏 -->
+            <div class="title"><strong>博客简介</strong></div>
+            <div class="ibox1">
+                <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本人是一名对人工智能非常感兴趣的学生，对后门攻击领域更是有些许了解。借着学习了一点 HTML 的知识
+                    （受一位素未谋面的师兄的启发！），突发奇想也想把自己的学习收获整理成一份Blog，一是用来记录学习成果，二也幻想着某天这份Blog真的能对这个领域
+                    的研究做出点贡献，方便研究人员快速获取想要的东西。
+                </p>
+                <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的Blog是一个专注于人工智能安全领域的综合性学习、研究与交流平台，
+                    特别聚焦于后门攻击这一具有挑战性和前沿性的课题。随着人工智能技术的迅猛发展，
+                    其广泛应用于各行各业，但同时也暴露出了一系列安全隐患，尤其是在深度学习模型中出现的后门攻击问题。
+                    后门攻击不仅威胁模型的可靠性和公平性，更对工业系统和敏感应用场景带来严峻挑战。
+                </p>
+                <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的Blog在分享个人科研干货和学习成果的同时，也想填补后门攻击研究中的信息鸿沟，
+                    为研究者、工程师和爱好者提供一个开放、实用、免费的学习和交流空间。在这里，你不仅可以快速入门，学习后门攻击领域的相关知识，
+                    也可以迅速了解到最新的后门攻击方法，最新的防御方法以及其它相关信息。
+
+                </p>
+                <p>
+                    <h2 align="right"><strong>持续更新中...</strong></h2>
+                </p>
+            </div>
+        </div>
+
+        <!-- 页脚 -->
+        <div class="foot">@  2025 meikong123</div>
+
+    </div>
+    <script src="js/js-index.js"></script>
+</body>
+
+</html>
