@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>科研工具</title>
+    <link rel="stylesheet" href="../css/css-introduce.css">
+</head>
+
+<body>
+
+    <div class="web">
+
+        <!-- 导航栏 -->
+        <div id="nav">
+            <ul>
+                <li><a href="../index.html">首页</a></li>
+                <li><a href="../introduce.html" class="active">科研工具</a></li>
+                <li><a href="../backdoor.html">后门攻击</a></li>
+                <li><a href="../attack.html">攻击方法</a></li>
+                <li><a href="../defend.html">防御方法</a></li>
+                <li><a href="../chat.html">交流讨论</a></li>
+                <li><a href="../callme.html">我要投稿</a></li>
+                <li><a href="../about.html">关于我们</a></li>
+            </ul>
+        </div>
+
+        <!-- 主体内容 -->
+        <div class="main">
+
+            <div class="title"><strong>Portainer与Docker的安装</strong></div>
+            <div class="ibox1">
+                <ul>
+                    <p>① 详细的安装教程可以参考这篇博客：<br><br>
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbsp<a href="https://blog.csdn.net/weixin_53510183/article/details/144665434">https://blog.csdn.net/weixin_53510183/article/details/144665434</a></span></p>
+                    <p>② 一些注意事项：<br><br>
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbsp（1）上面这篇博客突然变成付费了，可以去某宝兑换个1天的VIP查看</span> </p> 
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbsp（2）“docker pull portainer/portainer-ce:latest”可能需要点魔法</span> </p> 
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbsp（3）“http://server-ip:9000”页面进不去的话，可以尝试输入“你的ip地址:9000”进入</span> </p> 
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbsp（4）进入Portainer.io页面后，如果发现没有“Get Start”选项，可以将已经下载的Docker全部删除，重来一遍</span> </p> 
+                </ul>
+            </div>
+
+            <div class="title"><strong>安装Nvidia-Container-toolkit</strong></div>
+            <div class="ibox1">
+                <ul>
+                    <p>① 官网的安装教程如下：<br><br>
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbsp<a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html">https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html</a></span></p>
+                    <p>② 详细的安装步骤可以参考如下：<br><br>
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbsp（1）设置 NVIDIA 容器工具包的仓库源</span> </p> 
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbspsudo apt-get update</span> </p> 
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbspsudo apt-get install -y curl gnupg ca-certificates</span> </p> 
+                        <br>
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbsp添加 NVIDIA 的 GPG 密钥：</span> </p> 
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbspsudo mkdir -p /etc/apt/keyrings</span> </p> 
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbspcurl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | gpg --dearmor | sudo tee /etc/apt/keyrings/nvidia-container-toolkit.gpg > /dev/null</span> </p> 
+                        <br>
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbsp添加软件源（自动匹配 Ubuntu 版本）：</span> </p> 
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbspdistribution=$(. /etc/os-release;echo $ID$VERSION_ID)</span> </p> 
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbspcurl -s -L https://nvidia.github.io/libnvidia-container/$distribution/libnvidia-container.list | \</span> </p> 
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbspsed 's#deb https://#deb [signed-by=/etc/apt/keyrings/nvidia-container-toolkit.gpg] https://#' | \</span> </p> 
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbspsudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list</span> </p>      
+                        <br>
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbsp更新索引：</span> </p> 
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbspsudo apt-get update</span> </p> 
+                        <br>
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbsp（2）安装 NVIDIA Container Toolkit</span> </p> 
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbspsudo apt-get install -y nvidia-container-toolkit</span> </p> 
+                        <br>
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbsp（3）配置 Docker 使用 NVIDIA 运行时</span> </p> 
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbsp设置 Docker 默认使用 NVIDIA 容器运行时：</span> </p> 
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbspsudo nvidia-ctk runtime configure --runtime=docker</span> </p>
+                        <br>
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbsp重启 Docker：</span> </p> 
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbspsudo systemctl restart docker</span> </p>
+                        <br>
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbsp（4）测试</span> </p> 
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbspsudo docker run --rm --gpus all nvidia/cuda:12.3.2-base-ubuntu22.04 nvidia-smi</span> </p> 
+                </ul>
+            </div>
+
+            <div class="title"><strong>更改Docker文件存储位置</strong></div>
+            <div class="ibox1">
+                <ul>
+                    <p>① data盘挂载教程参考我的另一篇博客（一定要先挂载data盘，再改存储位置！！）：<br><br>
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbsp<a href="1-ubuntu.html">data盘挂载教程</a></span></p>
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbsp此步的目的就是为了防止Docker文件过大导致内存不足，以及主机出现问题数据丢失，可以准备一块专门用来存数据的盘来存储各种数据，把此盘“映射”到电脑中的一个文件夹，这样Docker的所有文件都是存储到你准备的这块盘上</span></p>
+                    <p>② 详细的操作步骤可以参考如下：<br><br>
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbsp（1）首先先把你已有的Docker文件复制到data盘中（！！！）</span> </p> 
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbspcp /Var/lib/docker /data/ # 前一个路径是Docker文件的默认存储位置，不同电脑不同，后一个是要更改到的文件夹路径</span> </p> 
+                        <br>
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbsp（2）打开 /etc/docker/daemon.json文件</span> </p> 
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbspsudo apt install nano</span> </p> 
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbspsudo nano /etc/docker/daemon.json</span> </p>
+                        <br>
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbsp（3）编辑内容如下（严格注意格式，我的网页上格式可能会有错误，此部分需要注意）</span> </p> 
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbsp{</span> </p> 
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbsp"data-root": "/data/docker", # 目标存储位置</span> </p>
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbsp"runtimes": {</span> </p>
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"nvidia":</span> </p>
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{</span> </p>
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"args": [],</span> </p>
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"path": "nvidia-container-runtime"</span> </p>
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp}</span> </p>
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbsp}</span> </p> 
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbsp}</span> </p> 
+                        <br>
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbsp（4）重启电脑</span> </p> 
+                </ul>
+            </div>
+
+            <div class="title"><strong>拉取镜像，创建容器</strong></div>
+            <div class="ibox1">
+                <ul>
+                    <p>① 可以从Docker Hub上拉取想要的镜像：选择想要的镜像，复制右侧的docker pull命令到cmd即可：<br><br>
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbsp<a href="https://hub.docker.com/r/nvidia/cuda/tags">https://hub.docker.com/r/nvidia/cuda/tags</a></span></p>
+                    <p>② 容器的创建：<br><br>
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbsp（1）使用已经下载的镜像，创建自己的容器，此部分可以参考官方公众号</span> </p> 
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbsp（2）容器创建好后，点击类似于“>”的符号进入容器，可以输入“Nvidia-smi”验证Nvidia-Container-toolkit是否安装成功</span> </p> 
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbsp（3）关于Docker的一些常用命令请参考我的另一篇博客（暂时还没整理）</span> </p> 
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- 页脚 -->
+        <div class="foot">@  2025 meikong123</div>
+
+    </div>
+
+</body>
+
+</html>
