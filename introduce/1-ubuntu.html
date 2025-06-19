@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>科研工具</title>
+    <link rel="stylesheet" href="../css/css-introduce.css">
+</head>
+
+<body>
+
+    <div class="web">
+
+        <!-- 导航栏 -->
+        <div id="nav">
+            <ul>
+                <li><a href="../index.html">首页</a></li>
+                <li><a href="../introduce.html" class="active">科研工具</a></li>
+                <li><a href="../backdoor.html">后门攻击</a></li>
+                <li><a href="../attack.html">攻击方法</a></li>
+                <li><a href="../defend.html">防御方法</a></li>
+                <li><a href="../chat.html">交流讨论</a></li>
+                <li><a href="../callme.html">我要投稿</a></li>
+                <li><a href="../about.html">关于我们</a></li>
+            </ul>
+        </div>
+
+        <!-- 主体内容 -->
+        <div class="main">
+
+            <div class="title"><strong>Ubuntu系统安装</strong></div>
+            <div class="ibox1">
+                <ul>
+                    <p>① 详细的安装教程可以参考这篇博客：<br><br>
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbsp<a href="https://zhuanlan.zhihu.com/p/569347838">https://zhuanlan.zhihu.com/p/569347838</a></span></p>
+                    <p>② 一些注意事项：<br><br>
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbsp（1）不同电脑进入BIOS界面快捷键不同：F2/F1/……（需要自行确认）</span> </p> 
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbsp（2）假设总共有512GB的硬盘用于安装系统，对应的分区大小可参考如下（其它设置参考教程）：</span> </p> 
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbsp→ /boot ： 26394MB</span> </p> 
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbsp→ /home ： 340000MB</span> </p> 
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbsp→ /- ： 131000MB</span> </p> 
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbsp→ swap ： 26393MB</span> </p> 
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbsp→ efi ： 500MB</span> </p> 
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbsp→ bios ： 1MB</span> </p> 
+                </ul>
+            </div>
+
+            <div class="title"><strong>显卡驱动的安装</strong></div>
+            <div class="ibox1">
+                <ul>
+                    <p>① 详细的安装教程可以参考这篇博客：<br><br>
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbsp<a href="https://blog.csdn.net/huiyoooo/article/details/128015155">https://blog.csdn.net/huiyoooo/article/details/128015155</a></span></p>
+                    <p>② 一些注意事项：<br><br>
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbsp（1）装完系统后先安装驱动，很容易出问题，出问题解决不了即使是重装系统也不会白浪费很多时间</a></span></p>
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbsp（2）装完系统后，安装最新版本的驱动出问题可以尝试安装之前的驱动版本；如果显卡版本比较新，可以尝试装最新版本的Ubuntu系统</a></span></p>
+                </ul>
+            </div>
+
+            <div class="title"><strong>data盘挂载</strong></div>
+            <div class="ibox1">
+                <ul>
+                    <p>① 查看系统中所有磁盘设备：<br><br>
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbspsudo fdisk -l</span></p>
+                    <p>② 对磁盘进行分区：<br><br>
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbspsudo fdisk /dev/sdb # 将sdb替换成实际磁盘名称（输入n创建新分区；输入w保存分区表；按回车键采用默认设置）</span> </p> 
+                    <p>③ 格式化分区：<br><br>
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbspsudo mkfs.ext4 /dev/sdb1 # 假设分区为sdb1</span></p>
+                    <p>④ 创建挂载点：<br><br>
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbspsudo mkdir /data # 创建目录“data”作为数据盘分区“sdb1”的挂载位置 </span></p>
+                    <p>⑤ 挂载磁盘：<br><br>
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbspsudo mount /dev/sdb1 /data  # 将数据盘分区“sdb1”挂载到目录“data”</span></p>
+                    <p>⑥ 永久挂载（系统重启后仍保持挂载）：<br><br>
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbspsudo blkid /dev/sdb1  # 获取数据盘分区“sdb1”的UUID</span></p>
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbspsudo nano /etc/fstab  # 编辑/etc/fstab文件</span></p>
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbspUUID=3e6be9de-8139-4104-8de9-4b2b64d64b2d /data ext4 defaults 0 0 # 在文件末尾添加一行（换成刚刚获取的UUID）；Ctrl + O 保存； Ctrl + X 退出</span></p>
+                    <p>⑦ 验证：<br><br>
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbspdf -h</span></p>
+                </ul>
+            </div>
+
+            <div class="title"><strong>魔法</strong></div>
+            <div class="ibox1">
+                <ul>
+                    <p>此部分暂不整理，可以自行学习<br><br>
+                </ul>
+            </div>
+
+            <div class="title"><strong>Anaconda3</strong></div>
+            <div class="ibox1">
+                <ul>
+                    <p>① 详细的安装教程可以参考这篇博客：<br><br>
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbsp<a href="https://blog.csdn.net/qq_63911508/article/details/148603787?spm=1001.2014.3001.5502">https://blog.csdn.net/qq_63911508/article/details/148603787?spm=1001.2014.3001.5502</a></span></p>
+                </ul>
+            </div>
+
+            <div class="title"><strong>VS Code</strong></div>
+            <div class="ibox1">
+                <ul>
+                    <p>① 详细的安装教程可以参考这篇博客：<br><br>
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbsp<a href="https://developer.baidu.com/article/details/2747033">https://developer.baidu.com/article/details/2747033</a></span></p>
+                </ul>
+            </div>
+
+            <div class="title"><strong>Zotero</strong></div>
+            <div class="ibox1">
+                <ul>
+                        <p>① 安装教程：<br><br>
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbsp（1）Zotero下载链接<a href="https://www.zotero.org/support/dev/zotero_7_for_developers">https://www.zotero.org/support/dev/zotero_7_for_developers</a></span></p>
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbsp（2）tar -xjvf Zotero-7.0.15_linux-x86_64.tar.bz2 -C ~/  # 解压并将其放在“home”目录</span></p>
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbsp（3）nano ~/.local/share/applications/zotero.desktop  # 创建一个.desktop文件，并复制下面的内容：</span></p>
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbsp[Desktop Entry]</span> </p> 
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbspName=Zotero</span> </p> 
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbspComment=Research tool</span> </p> 
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbspExec=/home/xxx/Zotero/zotero # xxx替换为实际名字</span> </p> 
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbspIcon=/home/xxx/Zotero/icons/icon128.png # 这里替换为实际的桌面图标路径</span> </p> 
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbspTerminal=false</span> </p> 
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbspType=Application</span> </p> 
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbspCategories=Office;</span> </p> 
+                        <span style="color: green;">&nbsp&nbsp&nbsp&nbsp&nbspStartupNotify=true</span> </p> 
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbsp（4）依次按：Ctrl + X → Y → Enter</span></p>
+                        <p>② 一些注意事项：<br><br>
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbsp（1）详细的安装教程可以参考这篇博客：<a href="https://developer.baidu.com/article/details/2747033">https://developer.baidu.com/article/details/2747033</a></span></p>   
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbsp（2）文档同步：Zotero文件夹下的storages目录中存放着所有的文献，可以直接复制到新主机的目录下，然后进行同步</a></span></p>
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbsp（3）Linux系统无法下载小绿鲸</a></span></p>
+                </ul>
+            </div>
+
+            <div class="title"><strong>WPS</strong></div>
+            <div class="ibox1">
+                <ul>
+                    <p>① 详细的安装教程可以参考这篇博客：<br><br>
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbsp<a href="https://blog.csdn.net/weixin_54788722/article/details/146974460">https://blog.csdn.net/weixin_54788722/article/details/146974460</a></span></p>
+                    <p>② 一些注意事项：<br><br>
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbsp安装问题不大，主要注意一下缺失字体的安装，Ubuntu有很多字体缺失</a></span></p>
+                </ul>
+            </div>
+
+            <div class="title"><strong>向日葵远控</strong></div>
+            <div class="ibox1">
+                <ul>
+                    <p>① 详细的安装教程可以参考这篇博客：<br><br>
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbsp<a href="https://blog.csdn.net/qq_63826739/article/details/146520435">https://blog.csdn.net/qq_63826739/article/details/146520435</a></span></p>
+                </ul>
+            </div>
+
+            <div class="title"><strong>微信</strong></div>
+            <div class="ibox1">
+                <ul>
+                    <p>① 详细的安装教程可以参考这篇博客：<br><br>
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbsp<a href="https://blog.csdn.net/HLX960725/article/details/144852556">https://blog.csdn.net/HLX960725/article/details/144852556</a></span></p>
+                </ul>
+            </div>
+
+            <div class="title"><strong>腾讯会议</strong></div>
+            <div class="ibox1">
+                <ul>
+                    <p>① 详细的安装教程可以参考这篇博客：<br><br>
+                        <span style="color: blue;">&nbsp&nbsp&nbsp&nbsp&nbsp<a href="https://blog.csdn.net/qq_64671439/article/details/136661090">https://blog.csdn.net/qq_64671439/article/details/136661090</a></span></p>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- 页脚 -->
+        <div class="foot">@  2025 meikong123</div>
+
+    </div>
+
+</body>
+
+</html>
