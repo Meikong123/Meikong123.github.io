@@ -1,0 +1,259 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg?v=mk-text-blue">
+<title>连线中……</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f4f4f4 0%, #e0e0e0 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+       .dialog-container {
+            width: 80%;
+            max-width: 800px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+       .dialog-header {
+            text-align: center;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+       .dialog-header h2 {
+            font-size: 24px;
+            color: #333;
+            margin: 0;
+        }
+
+       .dialog-content {
+            width: 100%;
+            margin-bottom: 20px;
+            text-align: left;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+       .answer-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+       .answer-button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 14px;
+        }
+
+       .answer-button:hover {
+            background-color: #0056b3;
+        }
+
+       .answer-button:disabled {
+            cursor: wait;
+            opacity: 0.55;
+        }
+    </style>
+    <link rel="stylesheet" href="../assets/css/site-polish.css">
+</head>
+
+<body>
+    <div class="dialog-container">
+        <div class="dialog-header">
+            <h2 id="dialog-title">与 Meikong 连线中……</h2>
+        </div>
+        <div class="dialog-content" id="dialog-history">
+        </div>
+        <div class="answer-buttons" id="answer-buttons"></div>
+    </div>
+    <script>
+        const dialogHistory = document.getElementById('dialog-history');
+        const answerButtons = document.getElementById('answer-buttons');
+
+        const history = [];
+        const author = 'Meikong';
+        let isTyping = false;
+
+        const firstAnswers = [
+            {
+                text: '我很想听',
+                callback: function () {
+                    addToHistory('我', '我很想听！！！');
+                    const story1 = '这个网站是我在研究、工程与记录的过程中一步步搭起来的个人空间。它最早源于人工智能安全与后门攻防的学习笔记，后来逐渐延伸到更多研究方向，比如人脸伪造检测、点云重建；也慢慢沉淀出一些工程经验、效率工具和个人思考。';
+                    answerButtons.innerHTML = '';
+                    const secondAnswers = [
+                        {
+                            text: '为什么要制作这个网站呢？',
+                            callback: function () {
+                                addToHistory('我', '为什么要制作这个网站呢？');
+                                const story2 = '最开始，我只是想把自己用过的资料和踩过的坑整理下来。后来慢慢发现，记录本身也会反过来帮助我思考：一个页面写清楚了，一个概念归纳好了，下一次再出发就会轻一点。';
+                                answerButtons.innerHTML = '';
+                                const finalAnswers = [
+                                    {
+                                        text: '谢谢你愿意把它留下来',
+                                        callback: function () {
+                                            addToHistory('我', '谢谢你愿意把它留下来');
+                                            const thanks = '也谢谢你愿意停下来听我讲这些。';
+                                            answerButtons.innerHTML = '';
+                                            addToHistory(author, thanks, renderHomeAnswer);
+                                        }
+                                    }
+                                ];
+                                addToHistory(author, story2, () => renderAnswers(finalAnswers));
+                            }
+                        },
+                        {
+                            text: '研究中最难的地方是什么？',
+                            callback: function () {
+                                addToHistory('我', '研究中最难的地方是什么？');
+                                const story3 = '最难的地方大概是面对未知时的耐心：研究会有看不懂的文章，工程会有配不好的环境，记录也会有不知道从哪里写起的时候。但只要把问题拆小，把每一次失败和修正留下来，路就会慢慢变清楚。';
+                                answerButtons.innerHTML = '';
+                                addToHistory(author, story3, () => renderAnswers([
+                                    {
+                                        text: '谢谢你的分享',
+                                        callback: function () {
+                                            addToHistory('我', '谢谢你的分享');
+                                            addToHistory(author, '也谢谢你愿意听到这里。', renderHomeAnswer);
+                                        }
+                                    }
+                                ]));
+                            }
+                        },
+                        {
+                            text: '有什么想对后来者说的吗？',
+                            callback: function () {
+                                addToHistory('我', '有什么想对后来者说的吗？');
+                                const story4 = '不要害怕一开始很慢，也不要因为暂时看不到结果就怀疑自己。学习和研究很多时候不是突然抵达，而是慢慢积累到某一天，你发现自己已经能走得更远了。';
+                                answerButtons.innerHTML = '';
+                                addToHistory(author, story4, () => renderAnswers([
+                                    {
+                                        text: '我记住了',
+                                        callback: function () {
+                                            addToHistory('我', '我记住了');
+                                            addToHistory(author, '那就很好。愿你也能留下自己的痕迹。', renderHomeAnswer);
+                                        }
+                                    }
+                                ]));
+                            }
+                        }
+                    ];
+                    addToHistory(author, story1, () => renderAnswers(secondAnswers));
+                }
+            },
+            {
+                text: '不太感兴趣',
+                callback: function () {
+                    addToHistory('我', '不太感兴趣');
+                    answerButtons.innerHTML = '';
+                    addToHistory(author, '没关系，愿你在这里也能找到一点有用的东西。', renderHomeAnswer);
+                }
+            }
+        ];
+
+        const initialMessage = '你好，我是 Meikong。既然你选择与我连线，想听听这个网站背后的故事吗？';
+        addToHistory(author, initialMessage, () => renderAnswers(firstAnswers));
+
+        function renderAnswers(answers) {
+            answerButtons.innerHTML = '';
+            answers.slice(0, 3).forEach(answer => {
+                const button = document.createElement('button');
+                button.classList.add('answer-button');
+                button.textContent = answer.text;
+                button.onclick = function () {
+                    if (isTyping) {
+                        return;
+                    }
+                    setButtonsDisabled(true);
+                    answer.callback();
+                };
+                answerButtons.appendChild(button);
+            });
+            setButtonsDisabled(false);
+        }
+
+        function setButtonsDisabled(disabled) {
+            answerButtons.querySelectorAll('button').forEach(button => {
+                button.disabled = disabled;
+            });
+        }
+
+        function renderHomeAnswer() {
+            renderAnswers([
+                {
+                    text: '返回网站首页',
+                    callback: function () {
+                        window.location.href = '../index.html';
+                    }
+                }
+            ]);
+        }
+
+        function addToHistory(sender, message, onComplete) {
+            history.push({ sender, message });
+            const p = document.createElement('p');
+            if (sender === '我') {
+                p.textContent = `${sender} : `;
+            } else {
+                p.textContent = `${sender}: `;
+            }
+            dialogHistory.appendChild(p);
+
+            if (sender === author) {
+                isTyping = true;
+                setButtonsDisabled(true);
+                let index = 0;
+                const typingInterval = setInterval(() => {
+                    if (index < message.length) {
+                        p.textContent += message[index];
+                        index++;
+                        dialogHistory.scrollTop = dialogHistory.scrollHeight;
+                    } else {
+                        clearInterval(typingInterval);
+                        isTyping = false;
+                        if (onComplete) {
+                            onComplete();
+                        } else {
+                            setButtonsDisabled(false);
+                        }
+                    }
+                }, 100);
+            } else {
+                p.textContent += message;
+                dialogHistory.scrollTop = dialogHistory.scrollHeight;
+                if (onComplete) {
+                    onComplete();
+                }
+            }
+        }
+    </script>
+    <script src="../assets/js/site-interactions.js"></script>
+</body>
+
+</html>
+

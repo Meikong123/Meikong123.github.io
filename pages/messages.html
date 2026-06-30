@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+    <title>访客留言</title>
+    <link rel="stylesheet" href="../assets/css/css-about.css">
+    <link rel="stylesheet" href="../assets/css/site-polish.css">
+</head>
+
+<body>
+    <div class="web">
+        <div id="nav">
+            <ul>
+                <li><a href="../index.html">网站首页</a></li>
+                <li><a href="science.html">实用干货</a></li>
+                <li><a href="internship.html">实习求职</a></li>
+                <li><a href="interests.html">研究兴趣</a></li>
+                <li><a href="thoughts.html">悟语心笺</a></li>
+                <li><a href="messages.html" class="active">访客留言</a></li>
+                <li><a href="about.html">关于作者</a></li>
+            </ul>
+        </div>
+
+        <main class="main">
+            <h1 class="title">访客留言</h1>
+
+            <section class="interactive-panel message-bottle message-page-panel">
+                <div class="message-page-heading">
+                    <span>Message Bottle</span>
+                    <p>给未来的自己，给这个网站，或者给某个刚好路过的人。</p>
+                </div>
+
+                <textarea id="bottle-input" maxlength="80"></textarea>
+                <div class="bottle-actions">
+                    <button type="button" id="bottle-submit">投入留言瓶</button>
+                    <button type="button" id="bottle-clear">清空我的留言</button>
+                </div>
+                <div class="bottle-list" id="bottle-list"></div>
+            </section>
+        </main>
+
+        <footer class="foot">© 2025-2026 meikong123</footer>
+    </div>
+
+    <script src="../assets/js/site-interactions.js"></script>
+</body>
+
+</html>

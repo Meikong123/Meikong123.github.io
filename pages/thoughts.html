@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg?v=mk-text-blue">
+<title>悟语心笺</title>
+    <link rel="stylesheet" href="../assets/css/css-index.css">
+    <link rel="stylesheet" href="../assets/css/site-polish.css">
+</head>
+
+<body>
+    <div class="web">
+        <!-- 导航栏 -->
+        <div id="nav">
+            <ul>
+                <li><a href="../index.html">网站首页</a></li>
+                <li><a href="science.html">实用干货</a></li>
+                <li><a href="internship.html">实习求职</a></li>
+                <li><a href="interests.html">研究兴趣</a></li>
+                <li><a href="thoughts.html" class="active">悟语心笺</a></li>
+                <li><a href="about.html">关于作者</a></li>
+            </ul>
+        </div>
+
+        <!-- 主体内容 -->
+        <div class="main">
+
+            <div class="title"><strong>悟语心笺</strong></div>
+
+            <section class="interactive-panel quote-drawer">
+                <h2>抽一句今天的悟语</h2>
+                <p id="daily-quote">点击按钮，给今天留一点轻轻的回声。</p>
+                <button type="button" id="draw-quote">抽一句</button>
+            </section>
+
+            <div class="announcement-board" id="thought-board">
+                <div class="announcement-item is-pinned">
+                    <span class="announcement-date">2025-03</span>
+                    <span class="announcement-day">26</span>
+                    <a href="../posts/thoughts/thought-1.html">
+                        <span class="announcement-title-text">写在开始</span>
+                    </a>
+                </div>
+                <div class="announcement-item">
+                    <span class="announcement-date">2025-03</span>
+                    <span class="announcement-day">30</span>
+                    <a href="../posts/thoughts/thought-2.html">我真的很幸运</a>
+                </div>
+            </div>
+
+            <!-- 翻页按钮 -->
+            <div class="pagination" id="thought-pagination">
+                <button id="thought-prev-page" onclick="thoughtPrevPage()">上一页</button>
+                <div id="thought-page-numbers"></div>
+                <button id="thought-next-page" onclick="thoughtNextPage()">下一页</button>
+            </div>
+
+        </div>
+
+        <!-- 页脚 -->
+        <div class="foot">© 2025-2026 meikong123</div>
+
+    </div>
+    <script src="../assets/js/js-index.js"></script>
+    <script src="../assets/js/site-interactions.js"></script>
+</body>
+
+</html>
+

@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg?v=mk-text-blue">
+<title>Meikong123</title>
+    <link rel="stylesheet" href="assets/css/css-index.css">
+    <link rel="stylesheet" href="assets/css/site-polish.css">
+</head>
+
+<body>
+    <div class="web">
+        <!-- 导航栏 -->
+        <div id="nav">
+            <ul>
+                <li><a href="index.html" class="active">网站首页</a></li>
+                <li><a href="pages/science.html">实用干货</a></li>
+                <li><a href="pages/internship.html">实习求职</a></li>
+                <li><a href="pages/interests.html">研究兴趣</a></li>
+                <li><a href="pages/thoughts.html">悟语心笺</a></li>
+                <li><a href="pages/about.html">关于作者</a></li>
+            </ul>
+        </div>
+
+        <!-- 主体内容 -->
+        <div class="main">
+
+            <section class="interactive-panel site-search">
+                <h2>站内搜索</h2>
+                <div class="search-main">
+                    <div class="search-box">
+                        <input id="site-search-input" type="search" placeholder="搜索：计算机视觉、大模型、强化学习、人脸……" autocomplete="off">
+                        <div class="search-results" id="site-search-results"></div>
+                    </div>
+                    <section class="home-discovery">
+                        <a class="picker-result" id="picker-result" href="pages/interests.html">研究兴趣</a>
+                    </section>
+                </div>
+
+                <div class="search-dashboard">
+                    <div class="traffic-clock" aria-label="当前时间">
+                        <span>当前时间</span>
+                        <strong id="site-clock">--:--:--</strong>
+                    </div>
+                    <section class="home-traffic" aria-label="站点浏览量">
+                        <div class="traffic-card">
+                            <span>总浏览量</span>
+                            <strong>9999+</strong>
+                        </div>
+                        <div class="traffic-card">
+                            <span>今日浏览量</span>
+                            <strong id="recent-views">--</strong>
+                        </div>
+                    </section>
+
+                </div>
+            </section>
+
+            <!-- 公告栏 -->
+            <div class="title"><strong>时光拾页</strong></div>
+            <div class="announcement-board" id="announcement-board">
+                <div class="announcement-item is-pinned">
+                    <span class="announcement-date">2025-01</span>
+                    <span class="announcement-day">16</span>
+                    <a href="posts/announcements/0announce-1.html">
+                        <span class="announcement-title-text">Blog首发公告</span>
+                    </a>
+                </div>
+                <div class="announcement-item">
+                    <span class="announcement-date">2026-07</span>
+                    <span class="announcement-day">01</span>
+                    <a href="posts/announcements/0announce-13.html">更新公告</a>
+                </div>
+                <div class="announcement-item">
+                    <span class="announcement-date">2026-06</span>
+                    <span class="announcement-day">30</span>
+                    <a href="posts/announcements/0announce-12.html">更新公告</a>
+                </div>
+                <div class="announcement-item">
+                    <span class="announcement-date">2025-09</span>
+                    <span class="announcement-day">03</span>
+                    <a href="posts/announcements/0announce-11.html">更新公告</a>
+                </div>
+                <div class="announcement-item">
+                    <span class="announcement-date">2025-06</span>
+                    <span class="announcement-day">19</span>
+                    <a href="posts/announcements/0announce-10.html">更新公告</a>
+                </div>
+                <div class="announcement-item">
+                    <span class="announcement-date">2025-06</span>
+                    <span class="announcement-day">15</span>
+                    <a href="posts/announcements/0announce-9.html">更新公告</a>
+                </div>
+                <div class="announcement-item">
+                    <span class="announcement-date">2025-03</span>
+                    <span class="announcement-day">30</span>
+                    <a href="posts/announcements/0announce-8.html">更新公告</a>
+                </div>
+                <div class="announcement-item">
+                    <span class="announcement-date">2025-03</span>
+                    <span class="announcement-day">26</span>
+                    <a href="posts/announcements/0announce-7.html">更新公告</a>
+                </div>
+                <div class="announcement-item">
+                    <span class="announcement-date">2025-03</span>
+                    <span class="announcement-day">09</span>
+                    <a href="posts/announcements/0announce-6.html">更新公告</a>
+                </div>
+                <div class="announcement-item">
+                    <span class="announcement-date">2025-03</span>
+                    <span class="announcement-day">02</span>
+                    <a href="posts/announcements/0announce-5.html">更新公告</a>
+                </div>
+                <div class="announcement-item">
+                    <span class="announcement-date">2025-02</span>
+                    <span class="announcement-day">23</span>
+                    <a href="posts/announcements/0announce-4.html">更新公告</a>
+                </div>
+                <div class="announcement-item">
+                    <span class="announcement-date">2025-02</span>
+                    <span class="announcement-day">10</span>
+                    <a href="posts/announcements/0announce-3.html">更新公告</a>
+                </div>
+                <div class="announcement-item">
+                    <span class="announcement-date">2025-02</span>
+                    <span class="announcement-day">07</span>
+                    <a href="posts/announcements/0announce-2.html">更新公告</a>
+                </div>
+            </div>
+            <!-- 翻页按钮 -->
+            <div class="pagination">
+                <button id="prev-page" onclick="prevPage()">上一页</button>
+                <div id="page-numbers"></div>
+                <button id="next-page" onclick="nextPage()">下一页</button>
+            </div>
+            <br><br>
+
+
+            <!-- 简介栏 -->
+            <div class="title"><strong>站点序章</strong></div>
+            <div class="ibox1">
+                <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这个网站是我在研究、工程与长期记录中一点点搭起来的个人空间。最开始，它只是用来整理人工智能安全，尤其是后门攻击方向的学习笔记；
+                    后来随着关注的问题越来越多，内容也逐渐扩展到人脸伪造检测、点云重建、工程实践、效率工具，以及一些阶段性的个人思考。
+                </p>
+                <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;现在的它更像一个缓慢生长的工作台：一部分用来放研究兴趣，记录我正在理解和追踪的问题；一部分用来放实用干货，
+                    把读论文、搭环境、找资源、写文档时反复用到的东西沉淀下来；也有一部分留给实习求职、个人随笔和访客留言，
+                    让这个网站不只是冷冰冰的资料库，而是带一点时间痕迹和个人温度的地方。
+                </p>
+                <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我一直觉得，记录不是学习结束后的附属动作，而是学习本身的一部分。一个页面写清楚了，一个概念归纳好了，
+                    下一次再回到同一个问题时，就能少绕一点路。那些曾经卡住我的细节、踩过的坑、临时找到的解决办法，如果能被认真整理下来，
+                    也许以后会帮到某个刚好路过的人，也会帮到未来的自己。
+                </p>
+                <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果你刚好也在学习计算机视觉、人工智能安全，或者正在搭环境、读论文、写项目、整理自己的知识体系，
+                    希望这个网站能给你一点参考。它还会继续生长，慢慢成为一份更清晰、更实用，也更像我自己的长期记录。
+                </p>
+                <p class="section-signature">Meikong 修改于 2026 年 7 月 1 日 凌晨</p>
+            </div>
+        </div>
+
+        <!-- 页脚 -->
+        <div class="foot">© 2025-2026 meikong123</div>
+
+    </div>
+    <script src="assets/js/js-index.js"></script>
+    <script src="assets/js/site-interactions.js"></script>
+</body>
+
+</html>
+
