@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="MK">
+  <defs>
+    <linearGradient id="mk-bg" x1="8" y1="8" x2="58" y2="58" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#111b36"/>
+      <stop offset="0.56" stop-color="#2f5fd0"/>
+      <stop offset="1" stop-color="#d79a2b"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="8" fill="url(#mk-bg)"/>
+  <rect x="4.5" y="4.5" width="55" height="55" rx="7.5" fill="none" stroke="#dbe5f2" stroke-opacity="0.9"/>
+  <text x="32" y="39" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="900" fill="#ffffff">MK</text>
+</svg>
